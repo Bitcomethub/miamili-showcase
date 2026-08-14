@@ -1,0 +1,267 @@
+@import 'tailwindcss';
+
+/* ============================================================================
+   MiamiLi Showcase — tasarım token'ları
+
+   Palet, referans sitenin ekran görüntülerinden PİKSEL ÖRNEKLEMESİYLE çıkarıldı
+   (göz kararı değil). İki yerde bilinçli sapma var, ikisi de erişilebilirlik
+   düzeltmesi:
+     1. Referans: altın buton + BEYAZ metin  -> 2.85:1 (WCAG AA FAIL)
+        Burada:  altın buton + KOYU YEŞİL metin -> 5.31:1 (PASS)
+     2. Referans: krem zeminde #B19565 etiket -> 2.53:1 (FAIL)
+        Burada:  krem zeminde #7E6636 etiket  -> 4.85:1 (PASS)
+   Bu yüzden altın TEK renk değil, üç rollü: dolgu / koyu-zemin-metni /
+   açık-zemin-metni. Yeni bir yerde altın kullanırken rolü seç, gözüne göre
+   token seçme.
+   ========================================================================= */
+
+@theme {
+  /* --- Yüzeyler --- */
+  --color-ink: #152a21; /* koyu orman yeşili: koyu bölüm zemini + açık zeminde metin */
+  --color-ink-lift: #233a30; /* koyu zemin üstünde yükseltilmiş kart */
+  --color-ink-glow: #1e3729; /* hero'daki tek ışık kaynağı (degrade durağı) */
+  --color-ink-edge: #31493d; /* koyu zeminde saç teli çizgi */
+  --color-cream: #f4f1ea; /* ana açık zemin */
+  --color-sand: #efebe0; /* alternatif açık bölüm zemini */
+  --color-sand-deep: #e5e0d2; /* açık zeminde çip / pasif yüzey */
+  --color-paper: #fbfaf5; /* açık zemin üstünde kart */
+  --color-edge: #ded8c9; /* açık zeminde saç teli çizgi */
+
+  /* --- Metin --- */
+  --color-warm: #5a564b; /* açık zeminde gövde metni  (6.49:1) */
+  --color-mist: #afc0b6; /* koyu zeminde gövde metni  (7.97:1) */
+  --color-mist-dim: #9bb0a4; /* koyu zeminde ikincil metin (6.60:1) */
+
+  /* --- Altın: üç rol, karıştırma --- */
+  --color-gold: #b19565; /* DOLGU: buton zemini, çizgi, çip. Üstüne ink metin. */
+  --color-gold-lift: #c9ae77; /* METİN: koyu zemin üstünde (7.08:1 / 5.70:1) */
+  --color-gold-deep: #7e6636; /* METİN: açık zemin üstünde (4.85:1) */
+
+  /* --- Tipografi --- */
+  --font-display: var(--font-bodoni), 'Bodoni Moda', 'Didot', Georgia, serif;
+  --font-body: var(--font-hanken), 'Hanken Grotesk', system-ui, sans-serif;
+
+  /* --- Boşluk ölçeği (4pt, semantik adlar) --- */
+  --spacing-2xs: 0.25rem;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  --spacing-4xl: 6rem;
+
+  /* --- Yumuşama: gerçek nesneler yavaşlar, zıplamaz --- */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Akışkan tip ölçeği — 1.25+ oranlı 6 adım. Pazarlama sayfası olduğu için
+   clamp() ile akışkan; ürün arayüzü olsaydı sabit rem kullanılırdı. */
+:root {
+  /* PUNTO TABANI — bir kez karar verildi, gözle seçilmez:
+     - `--step-micro` (11px) SADECE kısa, büyük harf, tracked ETİKETLER için.
+     - `--step-fine`  (12px) dipnot / yasal metin TABANI. Düz metin bunun
+       altına inmez; footer'daki geliştirici yasal metni 10.5px iken sayfadaki
+       okunabilir metnin oranını %48'e düşürüp Lighthouse'u kırmıştı.
+     Tek istisna: FloorStack'in şematik kat etiketleri (10px) — diyagram
+     anotasyonu, satır yüksekliğine bağlı ve `aria-hidden`. */
+  --step-micro: 0.6875rem;
+  --step-fine: 0.75rem;
+  --step-eyebrow: 0.75rem;
+  --step-body-sm: clamp(0.875rem, 0.85rem + 0.12vw, 0.9375rem);
+  --step-body: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --step-lead: clamp(1.125rem, 1.05rem + 0.36vw, 1.3125rem);
+  --step-h3: clamp(1.375rem, 1.25rem + 0.6vw, 1.75rem);
+  --step-h2: clamp(2rem, 1.6rem + 2vw, 3.25rem);
+  --step-h1: clamp(2.75rem, 2rem + 3.4vw, 4.75rem);
+  --step-figure: clamp(1.75rem, 1.4rem + 1.7vw, 2.75rem);
+
+  --header-h: 4.5rem;
+}
+
+* {
+  min-width: 0; /* grid/flex çocuklarının içeriğe göre taşmasını engeller */
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--step-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Sticky header, çapa hedeflerinin üstünü kesmesin */
+[id] {
+  scroll-margin-top: calc(var(--header-h) + 1.5rem);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Odak halkası: her yerde görünür, altın, zeminden bağımsız okunur */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Ortak sınıflar — Tailwind utility'lerinin tekrarı okunmaz hale geldiği yerde
+   ------------------------------------------------------------------------- */
+
+.shell {
+  width: 100%;
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 4rem);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: var(--step-eyebrow);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+  flex: none;
+}
+
+/* Bodoni'nin rakamları gövde fontundan çok daha karakterli — sayısal
+   değerlerde bilinçli olarak display fontuna geçiyoruz. */
+.figure {
+  font-family: var(--font-display);
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.rule {
+  height: 1px;
+  border: 0;
+  background: var(--color-edge);
+}
+
+/* Şartname bandı: mobilde yatay saç telleriyle yığılır, geniş ekranda dikey
+   ayraçlı tek satıra döner. Koşullu utility yığını yerine tek yerde tarif.
+   Sütun sayısı ve çizgi rengi çağıran taraftan `--band-cols` / `--band-edge`
+   ile ayarlanır (koyu bölümde de aynı bileşen kullanılıyor). */
+.spec-band {
+  --band-cols: 4;
+  --band-edge: var(--color-edge);
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.spec-band--framed {
+  border-block: 1px solid var(--band-edge);
+}
+
+.spec-band > * {
+  padding-block: 1.75rem;
+}
+
+.spec-band > * + * {
+  border-top: 1px solid var(--band-edge);
+}
+
+@media (min-width: 640px) {
+  .spec-band {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .spec-band > * + * {
+    border-top: 0;
+  }
+  .spec-band > *:nth-child(n + 3) {
+    border-top: 1px solid var(--band-edge);
+  }
+  /* Bu kural `* + *`ten daha spesifik olduğu için ÖNCELİĞİ vardır —
+     geniş ekranda da aynı sonucu vermek zorunda, silme. */
+  .spec-band > *:nth-child(even) {
+    border-left: 1px solid var(--band-edge);
+    padding-left: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .spec-band {
+    grid-template-columns: repeat(var(--band-cols), minmax(0, 1fr));
+  }
+  .spec-band > *:nth-child(n + 3) {
+    border-top: 0;
+  }
+  .spec-band > * + * {
+    border-left: 1px solid var(--band-edge);
+    padding-left: 1.75rem;
+  }
+}
+
+.rule-dark {
+  height: 1px;
+  border: 0;
+  background: var(--color-ink-edge);
+}
+
+/* Giriş animasyonu: tek, iyi zamanlanmış sayfa yüklenişi.
+   Dağınık mikro-etkileşim yerine kademeli tek bir açılış. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.85s var(--ease-out-expo) both;
+}
