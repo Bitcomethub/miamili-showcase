@@ -1,0 +1,97 @@
+{
+  "slug": "palm-tree-residences-miami",
+  "ad": "Palm Tree Residences Miami",
+  "marka": "Palm Tree Crew (Kygo)",
+  "gelistirici": "PMG (Property Markets Group) + Lion Development Group + Sterling Equities + Eden Residential",
+  "mimar": "Kobi Karp Architecture & Interior Design",
+  "adres": "31 NW 10th St, Miami, FL 33136 (Park West / Downtown Miami)",
+  "kat_sayisi": 37,
+  "toplam_unite": 483,
+  "teslim_tahmini": "Q4 2029",
+  "hoa": "$1.79/SQ FT",
+  "durum": "ön-satış (temel atımı henüz olmadı, Nisan 2027 planlanan)",
+  "depozito_yapisi": [
+    "%10 sözleşme imzasında",
+    "%10 sözleşmeden 6 ay sonra",
+    "%10 temel atımında (Nisan 2027)",
+    "%10 temel atımından 1 yıl sonra"
+  ],
+  "fiyat_araligi_ozet": "$560,000 – $3,000,000",
+  "unite_tipleri_fiyat": [
+    { "tip": "Jr. Suite · 1 Banyo", "fiyat": "$560,000–$799,000" },
+    { "tip": "Jr. Suite + Den · 1 Banyo", "fiyat": "$700,000–$899,000" },
+    { "tip": "1 Yatak + Den · 1 Banyo", "fiyat": "$700,000–$1.1M" },
+    { "tip": "2 Yatak Odası · 2 Banyo", "fiyat": "$900,000–$1.3M" },
+    { "tip": "3 Yatak Odası · 3 Banyo", "fiyat": "$1.4M–$3M" }
+  ],
+  "ornek_unite_listesi": [
+    { "no": "01", "tip": "Jr. Suite · 1 Banyo", "yasam_sf": 491, "balkon_sf": 152 },
+    { "no": "02", "tip": "Jr. Suite · 1 Banyo", "yasam_sf": 478, "balkon_sf": 171 },
+    { "no": "03", "tip": "Jr. Suite + Den · 1 Banyo", "yasam_sf": 632, "balkon_sf": 206 },
+    { "no": "04", "tip": "2 Yatak Odası · 2 Banyo", "yasam_sf": 853, "balkon_sf": 345 },
+    { "no": "05", "tip": "3 Yatak Odası · 3 Banyo", "yasam_sf": 1209, "balkon_sf": 213 },
+    { "no": "06", "tip": "Jr. Suite · 1 Banyo", "yasam_sf": 509, "balkon_sf": 72 },
+    { "no": "07", "tip": "Jr. Suite · 1 Banyo", "yasam_sf": 509, "balkon_sf": 72 },
+    { "no": "08", "tip": "1 Yatak + Den · 1 Banyo", "yasam_sf": 602, "balkon_sf": 106 },
+    { "no": "09", "tip": "1 Yatak + Den · 1 Banyo", "yasam_sf": 603, "balkon_sf": 95 },
+    { "no": "10", "tip": "2 Yatak Odası · 2 Banyo", "yasam_sf": 859, "balkon_sf": 352 },
+    { "no": "11", "tip": "Jr. Suite + Den · 1 Banyo", "yasam_sf": 619, "balkon_sf": 234 },
+    { "no": "12", "tip": "Jr. Suite · 1 Banyo", "yasam_sf": 478, "balkon_sf": 171 },
+    { "no": "13", "tip": "2 Yatak Odası · 2 Banyo", "yasam_sf": 863, "balkon_sf": 352 },
+    { "no": "14", "tip": "1 Yatak + Den · 1 Banyo", "yasam_sf": 605, "balkon_sf": 95 },
+    { "no": "15", "tip": "1 Yatak + Den · 1 Banyo", "yasam_sf": 604, "balkon_sf": 106 },
+    { "no": "16", "tip": "Jr. Suite · 1 Banyo", "yasam_sf": 510, "balkon_sf": 72 },
+    { "no": "17", "tip": "Jr. Suite · 1 Banyo", "yasam_sf": 510, "balkon_sf": 72 },
+    { "no": "18", "tip": "1 Yatak + Den · 1 Banyo", "yasam_sf": 606, "balkon_sf": 106 },
+    { "no": "19", "tip": "1 Yatak + Den · 1 Banyo", "yasam_sf": 607, "balkon_sf": 94 }
+  ],
+  "kat_plani_gruplari": {
+    "grup_a": "Kat 10 / 16 / 21 / 26 / 31",
+    "grup_b": "Kat 11-12, 14-15, 17-20, 22-25, 27-30, 32-35"
+  },
+  "amenite_level_09": {
+    "baslik": "Wellness & Spor",
+    "liste": [
+      "Technogym Donanımlı Fitness Merkezi",
+      "Hareket & Pilates Stüdyosu",
+      "Golf Simülatörü",
+      "Kapalı Padel Kortu",
+      "Kaya Tırmanış Duvarı",
+      "Spa & Wellness Merkezi",
+      "Buhar Odası & Sauna",
+      "İkiz Soğuk Havuz (Cold Plunge)",
+      "Dört Terapi/Masaj Odası",
+      "Dinlenme Odası & Wellness Lounge",
+      "Revive Juice Bar",
+      "Açık Hava Wellness Çimenliği"
+    ]
+  },
+  "amenite_level_37": {
+    "baslik": "Rooftop & Club",
+    "liste": [
+      "75′ × 25′ Rooftop Sonsuzluk Havuzu",
+      "Swim Spa",
+      "Palm Tree Bar & Lounge",
+      "Açık Hava Bar & DJ Alanı",
+      "Member's Club",
+      "Chef's Kitchen (Özel Şef Mutfağı)",
+      "Bahçe Terası & Güneşlenme Deck'i",
+      "Downtown Miami & Körfez Manzarası"
+    ]
+  },
+  "broker_bilgisi": {
+    "sunan": "MiamiLi Real Estate",
+    "broker": "Erman Adanır",
+    "adres": "1504 Bay Rd, Suite 10, Miami Beach, FL 33139",
+    "lisans": "BK3401359",
+    "telefon": "+1 305-690-3146"
+  },
+  "kaynaklar": [
+    "Erman'ın WhatsApp'ta paylaştığı resmi 'PTR DEPOSIT STRUCTURE.pdf' (2026-08-11)",
+    "Erman'ın WhatsApp'ta paylaştığı resmi 'PTR Price Range Sheet.pdf' (2026-08-11)",
+    "miamicondoinvestments.com/palm-tree-residences-miami (geliştirici/mimar/adres doğrulaması)",
+    "preconstruction.info/usa/florida/miami/palm-tree-residences-miami",
+    "newdev.miami/property/palm-tree-residences-miami",
+    "partnershiprealtymiami.com (proje arka planı, marka ortaklığı hikayesi)"
+  ]
+}
