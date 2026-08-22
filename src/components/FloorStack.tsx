@@ -42,8 +42,8 @@ export function FloorStack({
 
   const renkler = koyu
     ? {
-        pasif: saydam('--color-cream', 15),
-        aktif: saydam('--color-cream', 62),
+        pasif: saydam('--color-blanc', 15),
+        aktif: saydam('--color-blanc', 62),
         vurgu: 'var(--color-gold)',
         sayi: 'var(--color-mist-dim)',
         etiketRengi: 'var(--color-gold-lift)',
@@ -52,8 +52,8 @@ export function FloorStack({
         pasif: saydam('--color-ink', 13),
         aktif: saydam('--color-ink', 72),
         vurgu: 'var(--color-gold)',
-        sayi: 'var(--color-warm)',
-        etiketRengi: 'var(--color-gold-deep)',
+        sayi: 'var(--color-moss)',
+        etiketRengi: 'var(--color-ink)',
       };
 
   return (

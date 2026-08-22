@@ -14,8 +14,11 @@ type Props = {
 };
 
 export function SiteHeader({ kisaAd, altAd, telefon, projeAdi }: Props) {
-  // Hero koyu yeşil: en üstte başlık şeffaf ve krem metinli durur, hero'dan
-  // çıkınca krem zemine ve koyu metne geçer. İki ayrı tema değil, tek geçiş.
+  // Site KOYU-ÖNCELİKLİ: başlık her zaman zümrüt zeminli ve beyaz metinlidir.
+  // Kaydırma açık/koyu TEMA değiştirmez — yalnızca şeffaflığı değiştirir:
+  // hero'nun üstünde tamamen şeffaf, hero'dan çıkınca yarı saydam zümrüt +
+  // bulanıklık + saç teli. (Daha önce burada krem bir şerite geçiliyordu;
+  // koyu bir sayfanın üstünde açık bir bar yabancı duruyordu.)
   const [kaydirildi, setKaydirildi] = useState(false);
   const [menuAcik, setMenuAcik] = useState(false);
   const [aktifBolum, setAktifBolum] = useState<string | null>(null);
@@ -26,8 +29,8 @@ export function SiteHeader({ kisaAd, altAd, telefon, projeAdi }: Props) {
     if (!isaretci) return;
     // DİKKAT: `isIntersecting` burada YANLIŞ ölçüttür. İşaretçi hero'nun
     // sonundadır; hero ekrandan uzunsa (mobilde her zaman öyle) sayfanın en
-    // üstünde de "kesişmiyor" der ve başlık hero'nun üstündeyken krem zemine
-    // geçerdi. Doğru soru "işaretçi başlığın ÜSTÜNE çıktı mı".
+    // üstünde de "kesişmiyor" der ve başlık hero'nun üstündeyken zemin
+    // kazanırdı. Doğru soru "işaretçi başlığın ÜSTÜNE çıktı mı".
     const BASLIK_PX = 72;
     const olc = (giris: IntersectionObserverEntry) =>
       setKaydirildi(giris.boundingClientRect.top <= BASLIK_PX);
@@ -80,10 +83,11 @@ export function SiteHeader({ kisaAd, altAd, telefon, projeAdi }: Props) {
     };
   }, [menuAcik]);
 
-  // Mobil menü tam ekran koyu yeşil açılır; başlık o sırada krem zeminde
-  // kalırsa panelin tepesinde yabancı bir şerit oluşur.
-  const koyuZemin = !kaydirildi || menuAcik;
-  const metinRengi = koyuZemin ? 'var(--color-cream)' : 'var(--color-ink)';
+  // Mobil menü tam ekran zümrüt açılır; başlık o sırada yarı saydam zemin ve
+  // saç teli taşırsa panelin tepesinde yabancı bir şerit oluşur — bu yüzden
+  // menü açıkken başlık yeniden tamamen şeffaflaşır.
+  const seffaf = !kaydirildi || menuAcik;
+  const metinRengi = 'var(--color-blanc)';
 
   return (
     <>
@@ -91,9 +95,9 @@ export function SiteHeader({ kisaAd, altAd, telefon, projeAdi }: Props) {
         className="fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500"
         style={{
           height: 'var(--header-h)',
-          backgroundColor: koyuZemin ? 'transparent' : saydam('--color-cream', 92),
-          backdropFilter: koyuZemin ? 'none' : 'saturate(140%) blur(12px)',
-          borderBottom: `1px solid ${koyuZemin ? 'transparent' : 'var(--color-edge)'}`,
+          backgroundColor: seffaf ? 'transparent' : saydam('--color-ink', 88),
+          backdropFilter: seffaf ? 'none' : 'saturate(140%) blur(12px)',
+          borderBottom: `1px solid ${seffaf ? 'transparent' : 'var(--color-ink-edge)'}`,
           transitionTimingFunction: 'var(--ease-out-quart)',
         }}
       >
@@ -121,9 +125,7 @@ export function SiteHeader({ kisaAd, altAd, telefon, projeAdi }: Props) {
                   letterSpacing: '0.2em',
                   textTransform: 'uppercase',
                   fontWeight: 500,
-                  color: koyuZemin
-                    ? 'var(--color-gold-lift)'
-                    : 'var(--color-gold-deep)',
+                  color: 'var(--color-gold-lift)',
                 }}
               >
                 {altAd}
@@ -133,18 +135,11 @@ export function SiteHeader({ kisaAd, altAd, telefon, projeAdi }: Props) {
               aria-hidden="true"
               className="hidden h-8 w-px sm:block"
               style={{
-                backgroundColor: koyuZemin
-                  ? saydam('--color-cream', 28)
-                  : 'var(--color-edge)',
+                backgroundColor: saydam('--color-blanc', 28),
               }}
             />
             <span className="hidden sm:block">
-              <MiamiliMark
-                ton={koyuZemin ? 'cream' : 'ink'}
-                boyut="sm"
-                oncelikli
-                dekoratif
-              />
+              <MiamiliMark ton="blanc" boyut="sm" oncelikli dekoratif />
             </span>
           </a>
 
@@ -174,9 +169,7 @@ export function SiteHeader({ kisaAd, altAd, telefon, projeAdi }: Props) {
                     aria-hidden="true"
                     className="absolute inset-x-0 -bottom-0.5 h-px origin-left transition-transform duration-300"
                     style={{
-                      backgroundColor: koyuZemin
-                        ? 'var(--color-gold-lift)'
-                        : 'var(--color-gold)',
+                      backgroundColor: 'var(--color-gold-lift)',
                       transform: `scaleX(${aktif ? 1 : 0})`,
                       transitionTimingFunction: 'var(--ease-out-quart)',
                     }}
@@ -268,7 +261,7 @@ export function SiteHeader({ kisaAd, altAd, telefon, projeAdi }: Props) {
                 className="border-b py-4 font-[family-name:var(--font-display)]"
                 style={{
                   borderColor: 'var(--color-ink-edge)',
-                  color: 'var(--color-cream)',
+                  color: 'var(--color-blanc)',
                   fontSize: 'var(--step-h3)',
                   animation: menuAcik
                     ? `rise 0.5s var(--ease-out-expo) ${i * 45}ms both`
@@ -301,7 +294,7 @@ export function SiteHeader({ kisaAd, altAd, telefon, projeAdi }: Props) {
             >
               Görüşme Ayarla
             </a>
-            <MiamiliMark ton="cream" boyut="md" taglineGoster />
+            <MiamiliMark ton="blanc" boyut="md" taglineGoster />
           </div>
         </div>
       </div>

@@ -354,8 +354,12 @@ for (const dosya of veriDosyalari) {
   );
 
   /* --- 6. GÖRSEL DÜRÜSTLÜĞÜ ------------------------------------------------- */
+  // Yalnızca MARKA kelime işareti. `blanc` koyu zeminde, `ink` açık zeminde.
+  // (`cream` varyantı krem tasfiyesinde emekliye ayrıldı — dosya marka arşivi
+  // olarak public/ içinde duruyor ama sayfaya artık girmiyor, o yüzden burada
+  // da izinli DEĞİL: geri sızarsa bu kapı haber verir.)
   const IZINLI_GORSELLER = [
-    '/miamili-wordmark-cream.png',
+    '/miamili-wordmark-blanc.png',
     '/miamili-wordmark-ink.png',
   ];
   const imgKaynaklari = [...html.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/gi)].map(

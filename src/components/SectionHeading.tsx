@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 
 type Props = {
   etiket: string;
@@ -11,8 +11,11 @@ type Props = {
 
 /**
  * Editoryal bölüm başlığı: altın saç teli + tracked etiket, ardından Bodoni H2.
- * Etiket rengi zemine göre DEĞİŞMEK ZORUNDA — açık zeminde marka altını
- * (#B19565) 2.53:1 ile WCAG'den kalıyor, o yüzden açık zeminde gold-deep.
+ *
+ * Etiket rengi zemine göre DEĞİŞMEK ZORUNDA. Açık zeminde altın METİN yasak —
+ * #B19565 beyaz üstünde 2.85:1, #C9AE77 2.14:1, ikisi de AA'dan kalıyor. Bu
+ * yüzden açık zeminde etiket `--color-moss` (7.31:1) ve altın vurgu METİNDEN
+ * ÇİZGİYE taşınır; koyu zeminde `--color-gold-lift` (7.08:1) metin olarak kalır.
  */
 export function SectionHeading({
   etiket,
@@ -26,7 +29,15 @@ export function SectionHeading({
     <header className="max-w-[46rem]">
       <p
         className="eyebrow"
-        style={{ color: koyu ? 'var(--color-gold-lift)' : 'var(--color-gold-deep)' }}
+        style={
+          {
+            color: koyu ? 'var(--color-gold-lift)' : 'var(--color-moss)',
+            // Açık zeminde altın HARF yasak (2.85:1) ama altın ÇİZGİ serbest —
+            // bölüm başlığının altın vurgusu bu yüzden metinden çizgiye taşındı.
+            '--eyebrow-cizgi': koyu ? 'currentColor' : 'var(--color-gold)',
+            '--eyebrow-cizgi-opaklik': koyu ? 0.55 : 1,
+          } as CSSProperties
+        }
       >
         {etiket}
       </p>
@@ -35,7 +46,7 @@ export function SectionHeading({
         className="mt-5"
         style={{
           fontSize: 'var(--step-h2)',
-          color: koyu ? 'var(--color-cream)' : 'var(--color-ink)',
+          color: koyu ? 'var(--color-blanc)' : 'var(--color-ink)',
         }}
       >
         {baslik}
@@ -46,7 +57,7 @@ export function SectionHeading({
           style={{
             fontSize: 'var(--step-lead)',
             lineHeight: koyu ? 1.65 : 1.6,
-            color: koyu ? 'var(--color-mist)' : 'var(--color-warm)',
+            color: koyu ? 'var(--color-mist)' : 'var(--color-moss)',
           }}
         >
           {aciklama}

@@ -8,3 +8,6 @@ next-env.d.ts
 .vercel
 lighthouse-*.json
 lighthouse-*.report.html
+
+# ekran görüntüsü / ölçüm çıktıları (yerel kanıt, depoya girmez)
+.shots/

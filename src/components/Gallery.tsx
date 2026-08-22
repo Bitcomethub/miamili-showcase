@@ -55,12 +55,13 @@ export function Gallery({ sekmeler, aciklama, telefon, projeAdi }: Props) {
     <section
       id="galeri"
       style={{
-        backgroundColor: 'var(--color-sand)',
+        backgroundColor: 'var(--color-ink)',
         paddingBlock: 'clamp(4.5rem, 9vw, 8rem)',
       }}
     >
       <div className="shell">
         <SectionHeading
+          ton="dark"
           etiket="Galeri"
           baslik="Mimari ve yaşam alanları"
           aciklama={aciklama}
@@ -92,9 +93,13 @@ export function Gallery({ sekmeler, aciklama, telefon, projeAdi }: Props) {
                 }}
                 className="rounded-full px-6 py-3 transition-colors duration-200"
                 style={{
-                  backgroundColor: secili ? 'var(--color-ink)' : 'transparent',
-                  color: secili ? 'var(--color-cream)' : 'var(--color-ink)',
-                  border: `1px solid ${secili ? 'var(--color-ink)' : 'var(--color-edge)'}`,
+                  // Koyu zeminde seçili durum ALTIN DOLGU (üstüne ink metin,
+                  // 5.31:1). Seçili olmayanın kenarı bir KONTROLÜN sınırıdır:
+                  // WCAG 1.4.11 ≥3:1 ister, dekoratif `--color-ink-edge` 1.55:1
+                  // ile bunu karşılamaz — bu yüzden `-strong` (3.16:1).
+                  backgroundColor: secili ? 'var(--color-gold)' : 'transparent',
+                  color: secili ? 'var(--color-ink)' : 'var(--color-blanc)',
+                  border: `1px solid ${secili ? 'var(--color-gold)' : 'var(--color-ink-edge-strong)'}`,
                   fontSize: 12,
                   letterSpacing: '0.13em',
                   textTransform: 'uppercase',
@@ -126,6 +131,7 @@ export function Gallery({ sekmeler, aciklama, telefon, projeAdi }: Props) {
               telefon={telefon}
               waMesaji={`Merhaba, ${projeAdi} için ${aktifSekme.etiket.toLocaleLowerCase('tr-TR')} görsellerini talep ediyorum.`}
               oran="16 / 9"
+              ton="dark"
             />
           ) : (
             <ul className="grid gap-4 sm:grid-cols-2">

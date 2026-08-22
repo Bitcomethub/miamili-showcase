@@ -7,6 +7,11 @@ import { MARKA } from '@/lib/brand';
  * elmas nokta, açık bacaklı M); font ile taklit EDİLMEZ.
  * Koyu ve açık zemin için iki ayrı renk varyantı vardır; CSS filtresiyle
  * renklendirme yapılmaz (filtre kenarları kirletiyor).
+ *
+ * `blanc` varyantı SAF BEYAZ'dır. Önceki `cream` varlığı düz krem dolguydu —
+ * yani sayfadaki son krem pikseldi; alfa kanalı korunarak beyaza çevrildi.
+ * Orijinal `miamili-wordmark-cream.png` marka arşivi olarak public/ içinde
+ * duruyor, geri dönmek istenirse tek kelimelik değişiklik.
  */
 
 const GENISLIKLER = {
@@ -16,8 +21,8 @@ const GENISLIKLER = {
 } as const;
 
 type Props = {
-  /** 'ink' açık zeminde, 'cream' koyu zeminde */
-  ton: 'ink' | 'cream';
+  /** 'ink' açık zeminde, 'blanc' koyu zeminde */
+  ton: 'ink' | 'blanc';
   boyut?: keyof typeof GENISLIKLER;
   taglineGoster?: boolean;
   oncelikli?: boolean;
@@ -57,7 +62,7 @@ export function MiamiliMark({
             fontSize: Math.max(9, Math.round(w / 21)),
             letterSpacing: '0.3em',
             textIndent: '0.3em',
-            color: ton === 'cream' ? 'var(--color-mist)' : 'var(--color-warm)',
+            color: ton === 'blanc' ? 'var(--color-mist)' : 'var(--color-moss)',
           }}
         >
           {MARKA.tagline}

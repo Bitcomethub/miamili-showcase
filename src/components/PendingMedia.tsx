@@ -49,7 +49,7 @@ export function PendingMedia({
         minHeight: '15rem',
         border: `1px solid ${cizgi}`,
         borderRadius: 2,
-        backgroundColor: koyu ? 'var(--color-ink-lift)' : 'var(--color-paper)',
+        backgroundColor: koyu ? 'var(--color-ink-lift)' : 'var(--color-frost)',
         backgroundImage: `repeating-linear-gradient(135deg, ${tarama} 0 1px, transparent 1px 11px)`,
       }}
     >
@@ -63,7 +63,7 @@ export function PendingMedia({
         style={{
           fontSize: 'var(--step-h3)',
           lineHeight: 1.2,
-          color: koyu ? 'var(--color-cream)' : 'var(--color-ink)',
+          color: koyu ? 'var(--color-blanc)' : 'var(--color-ink)',
         }}
       >
         {baslik}
@@ -73,7 +73,7 @@ export function PendingMedia({
         style={{
           fontSize: 'var(--step-body-sm)',
           lineHeight: 1.65,
-          color: koyu ? 'var(--color-mist)' : 'var(--color-warm)',
+          color: koyu ? 'var(--color-mist)' : 'var(--color-moss)',
         }}
       >
         {aciklama}
@@ -89,7 +89,7 @@ export function PendingMedia({
           letterSpacing: '0.16em',
           textTransform: 'uppercase',
           fontWeight: 500,
-          color: koyu ? 'var(--color-gold-lift)' : 'var(--color-gold-deep)',
+          color: koyu ? 'var(--color-gold-lift)' : 'var(--color-ink)',
         }}
       >
         <span style={{ borderBottom: '1px solid currentColor' }}>

@@ -15,7 +15,10 @@ npm install
 npm run dev            # localhost:3000  ("/" -> birincil projeye yönlenir)
 
 npm run build          # statik üretim
-npm run verify         # veri doğrulama (build çıktısını okur — ÖNCE build)
+npm run check:palette  # palet kapısı (bej taraması + kontrast tablosu)
+npm run verify         # palet kapısı + veri doğrulama (build çıktısını okur — ÖNCE build)
+npm run shots -- --url <adres> --out .shots/x --widths 393,1280 [--full]
+                       # ekran görüntüsü + zeminleri TARAYICIDAN ölç
 npm run typecheck
 ```
 
@@ -83,14 +86,26 @@ bağlantılarıyla. Bu yüzden KVKK onay katmanına da ihtiyaç yok. `next.confi
 içindeki CSP bunu teknik olarak zorlar — biri yanlışlıkla embed eklerse tarayıcı
 engeller.
 
-### 5. Altın tek renk değil, üç rol
-`--color-gold` (#B19565) **dolgu** (buton/çip zemini) — üstüne koyu yeşil metin.
-`--color-gold-lift` (#C9AE77) koyu zeminde **metin**.
-`--color-gold-deep` (#7E6636) açık zeminde **metin**.
+### 5. Koyu-zümrüt öncelikli; bej/krem YASAK
+Sayfanın taşıyıcı zemini derin zümrüttür (`--color-ink` #152A21). Okuma
+bölümleri bunun üstünde **saf beyaz** (#FFFFFF) bantlar ve kartlardır; ikincil
+açık yüzey gerekirse yeşile kayan **soğuk nötr** (`--color-frost` #F1F5F3)
+kullanılır. Bej / krem / kum / "kağıt" tonları hiçbir yüzeyde kullanılmaz.
 
-Referans sunum tek altın kullandığı için iki WCAG hatası üretiyordu: altın
-üzerine beyaz metin 2.85:1, krem üzerine altın etiket 2.53:1. Yeni bir yerde
-altın kullanırken rolü seç, gözüne göre token seçme.
+Bu bir tercih değil, **kapı**: `npm run check:palette` src/ içindeki her hex'i
+tarar ve sıcak-nötr bandına (R ≥ G > B, chroma ≤ 46) düşen her değeri reddeder —
+yasak listeye yazmayı unuttuğumuz yeni bir bej de dahil.
+
+### 5b. Altın iki rol + odak halkası, ve açık zeminde METİN OLAMAZ
+`--color-gold` (#B19565) **dolgu / çizgi** — üstüne koyu yeşil metin (5.31:1).
+`--color-gold-lift` (#C9AE77) **yalnız koyu zeminde metin** (7.08:1).
+`--color-gold-focus` (#9A7F4C) odak halkası — beyazda 3.81:1, zümrütte 3.98:1;
+tek renkle iki yüzeyde de WCAG 2.4.11'i geçer.
+
+Açık zeminde altın **metin** yasaktır: #B19565 beyaz üstünde 2.85:1, #C9AE77
+2.14:1. Açık zeminde altın yalnız **çizgi ve dolgu** olarak görünür (eyebrow saç
+teli, alıntı kenarı, seçili çip zemini). Eski `--color-gold-deep` bu kural
+yüzünden gereksizleşti ve kaldırıldı.
 
 ### 6. Punto tabanı
 Düz metin **12px altına inmez** (`--step-fine`). `--step-micro` (11px) yalnızca
@@ -117,7 +132,9 @@ değiştirince hangi katları kapsadığını görürsünüz. Ekranda her iki ye
 
 ## Doğrulama
 
-`npm run verify` yedi kapıdan geçer ve herhangi biri düşerse çıkış kodu 1 verir:
+`npm run verify` önce **palet kapısını** (`check-palette.mjs`: sıcak-nötr
+taraması, token bütünlüğü, kontrast tablosu) sonra yedi veri kapısını koşar;
+herhangi biri düşerse çıkış kodu 1 verir:
 
 | # | Kapı | Ne kanıtlar |
 |---|---|---|
@@ -153,6 +170,9 @@ yetmez.
 ```
 data/<slug>.json            proje verisi (tek doğruluk kaynağı)
 reference/                  Erman'ın PDF'lerinden çıkarılan ham veri + yapı notları
+scripts/check-palette.mjs   palet kapısı: bej taraması + kontrast tablosu
+scripts/lib/warm.mjs        sıcak-nötr bandı + WCAG kontrast (tek kaynak)
+scripts/measure-surface.mjs ekran görüntüsü + canlı zemin ölçümü (CDP, bağımlılıksız)
 scripts/verify-data.mjs     yedi kapılı doğrulama
 src/lib/project.ts          şema, türetmeler, token motoru
 src/lib/projects.ts         data/ yükleyici — şablonun giriş noktası

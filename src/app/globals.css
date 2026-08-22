@@ -3,39 +3,54 @@
 /* ============================================================================
    MiamiLi Showcase — tasarım token'ları
 
-   Palet, referans sitenin ekran görüntülerinden PİKSEL ÖRNEKLEMESİYLE çıkarıldı
-   (göz kararı değil). İki yerde bilinçli sapma var, ikisi de erişilebilirlik
-   düzeltmesi:
-     1. Referans: altın buton + BEYAZ metin  -> 2.85:1 (WCAG AA FAIL)
-        Burada:  altın buton + KOYU YEŞİL metin -> 5.31:1 (PASS)
-     2. Referans: krem zeminde #B19565 etiket -> 2.53:1 (FAIL)
-        Burada:  krem zeminde #7E6636 etiket  -> 4.85:1 (PASS)
-   Bu yüzden altın TEK renk değil, üç rollü: dolgu / koyu-zemin-metni /
-   açık-zemin-metni. Yeni bir yerde altın kullanırken rolü seç, gözüne göre
-   token seçme.
+   YÖN: KOYU-ZÜMRÜT ÖNCELİKLİ LÜKS.
+   Sayfanın taşıyıcı zemini derin zümrüttür (`--color-ink`); okuma bölümleri
+   bunun üstünde SAF BEYAZ bantlar / kartlar olarak durur. Sıcak-nötr (bej,
+   krem, kum, "kağıt") hiçbir yüzeyde KULLANILMAZ — ikincil açık yüzey gerekirse
+   yeşile kayan SOĞUK nötr (`--color-frost`) kullanılır.
+   `npm run check:palette` bunu kapı olarak zorlar: R ≥ G > B ve chroma ≤ 46
+   olan her hex kaynak koddan reddedilir.
+
+   ÜÇ KURAL, hepsi ölçülmüştür (sRGB/WCAG aritmetiği, göz kararı değil):
+
+   1. ALTIN METİN YALNIZ KOYU ZEMİNDE.  Açık zeminde altın metin YASAK.
+      #B19565 beyaz üstünde 2.85:1, #C9AE77 2.14:1 — ikisi de AA'dan kalıyor.
+      Açık zeminde altın yalnız ÇİZGİ ve DOLGU olarak görünür (eyebrow saç teli,
+      alıntı kenarı, seçili çip zemini); harf olarak asla.
+   2. ALTIN İKİ ROLLÜ.  `--color-gold` DOLGU/ÇİZGİ (üstüne `--color-ink` metin,
+      5.31:1), `--color-gold-lift` koyu zeminde METİN (7.08:1). Üçüncü bir
+      "açık zemin altını" ARTIK YOK — kural 1 onu gereksiz kıldı.
+   3. KENAR RENGİ ROLE GÖRE SEÇİLİR.  `--color-edge` / `--color-ink-edge`
+      DEKORATİF saç telidir (liste ayracı). Bir KONTROLÜN sınırını çizen kenar
+      WCAG 1.4.11 gereği ≥3:1 olmak zorundadır: `--color-edge-strong` (3.49:1)
+      ve `--color-ink-edge-strong` (3.16:1).
    ========================================================================= */
 
 @theme {
-  /* --- Yüzeyler --- */
-  --color-ink: #152a21; /* koyu orman yeşili: koyu bölüm zemini + açık zeminde metin */
+  /* --- Koyu zümrüt kabuk: sayfanın taşıyıcı zemini --- */
+  --color-ink: #152a21; /* body + koyu bölüm zemini */
   --color-ink-lift: #233a30; /* koyu zemin üstünde yükseltilmiş kart */
   --color-ink-glow: #1e3729; /* hero'daki tek ışık kaynağı (degrade durağı) */
-  --color-ink-edge: #31493d; /* koyu zeminde saç teli çizgi */
-  --color-cream: #f4f1ea; /* ana açık zemin */
-  --color-sand: #efebe0; /* alternatif açık bölüm zemini */
-  --color-sand-deep: #e5e0d2; /* açık zeminde çip / pasif yüzey */
-  --color-paper: #fbfaf5; /* açık zemin üstünde kart */
-  --color-edge: #ded8c9; /* açık zeminde saç teli çizgi */
+  --color-ink-edge: #31493d; /* koyu zeminde DEKORATİF saç teli */
+  --color-ink-edge-strong: #5e786b; /* koyu zeminde KONTROL kenarı (3.16:1) */
 
-  /* --- Metin --- */
-  --color-warm: #5a564b; /* açık zeminde gövde metni  (6.49:1) */
+  /* --- Açık yüzeyler: saf beyaz + soğuk nötr. Sıcak/bej banda ASLA. --- */
+  --color-blanc: #ffffff; /* okuma bandı / kart; koyu zeminde başlık metni (15.16:1) */
+  --color-frost: #f1f5f3; /* ikincil açık yüzey — yeşile kayan soğuk gri */
+  --color-frost-deep: #e2e9e5; /* açık zeminde pasif çip dolgusu */
+  --color-edge: #d3ddd8; /* açık zeminde DEKORATİF saç teli */
+  --color-edge-strong: #7a8e83; /* açık zeminde KONTROL kenarı (3.49:1) */
+
+  /* --- Metin: açık yüzey (moss) ve koyu yüzey (mist) simetrik --- */
+  --color-moss: #43544c; /* açık zeminde gövde metni  (8.04:1 / 7.31:1) */
+  --color-moss-dim: #5e7168; /* açık zeminde üçüncül metin (5.20:1 / 4.73:1) */
   --color-mist: #afc0b6; /* koyu zeminde gövde metni  (7.97:1) */
   --color-mist-dim: #9bb0a4; /* koyu zeminde ikincil metin (6.60:1) */
 
-  /* --- Altın: üç rol, karıştırma --- */
-  --color-gold: #b19565; /* DOLGU: buton zemini, çizgi, çip. Üstüne ink metin. */
-  --color-gold-lift: #c9ae77; /* METİN: koyu zemin üstünde (7.08:1 / 5.70:1) */
-  --color-gold-deep: #7e6636; /* METİN: açık zemin üstünde (4.85:1) */
+  /* --- Altın: iki rol + yüzeyden bağımsız odak halkası --- */
+  --color-gold: #b19565; /* DOLGU / ÇİZGİ. Üstüne ink metin (5.31:1). */
+  --color-gold-lift: #c9ae77; /* METİN — YALNIZ koyu zeminde (7.08:1 / 5.70:1) */
+  --color-gold-focus: #9a7f4c; /* odak halkası: beyaz 3.81:1, zümrüt 3.98:1 */
 
   /* --- Tipografi --- */
   --font-display: var(--font-bodoni), 'Bodoni Moda', 'Didot', Georgia, serif;
@@ -91,8 +106,11 @@ html {
 }
 
 body {
-  background-color: var(--color-cream);
-  color: var(--color-ink);
+  /* Sayfanın taşıyıcı zemini DERİN ZÜMRÜT: açık bölümler bunun üstünde beyaz
+     bant olarak durur, tersi değil. Aşırı kaydırmada (overscroll) ve bölüm
+     zeminlerinin boyamadığı her yerde görünen renk budur. */
+  background-color: var(--color-ink);
+  color: var(--color-blanc);
   font-family: var(--font-body);
   font-size: var(--step-body);
   line-height: 1.6;
@@ -120,9 +138,12 @@ p {
   text-wrap: pretty;
 }
 
-/* Odak halkası: her yerde görünür, altın, zeminden bağımsız okunur */
+/* Odak halkası: HER İKİ yüzeyde de ölçülmüş.
+   `--color-gold` (#B19565) beyaz üstünde 2.85:1 ile WCAG 2.4.11'in 3:1
+   eşiğinden kalıyordu; `--color-gold-focus` (#9A7F4C) beyazda 3.81:1,
+   zümrüt zeminde 3.98:1 verir — tek renk, iki yüzey, ikisinde de geçer. */
 :focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-gold-focus);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -170,8 +191,8 @@ p {
   content: '';
   width: 2.5rem;
   height: 1px;
-  background: currentColor;
-  opacity: 0.55;
+  background: var(--eyebrow-cizgi, currentColor);
+  opacity: var(--eyebrow-cizgi-opaklik, 0.55);
   flex: none;
 }
 
@@ -188,6 +209,10 @@ p {
   border: 0;
   background: var(--color-edge);
 }
+
+/* Bölüm başlığındaki altın saç teli. Açık zeminde eyebrow METNİ altın OLAMAZ
+   (2.85:1) ama ÇİZGİSİ altın kalabilir — bu yüzden çizgi rengi metinden ayrı
+   bir değişkendir, varsayılanı `currentColor`. */
 
 /* Şartname bandı: mobilde yatay saç telleriyle yığılır, geniş ekranda dikey
    ayraçlı tek satıra döner. Koşullu utility yığını yerine tek yerde tarif.

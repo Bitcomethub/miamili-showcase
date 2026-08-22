@@ -20,7 +20,7 @@ export function SiteFooter({ proje }: { proje: ProjectView }) {
     >
       <div className="shell">
         <div className="flex justify-center">
-          <MiamiliMark ton="cream" boyut="lg" taglineGoster />
+          <MiamiliMark ton="blanc" boyut="lg" taglineGoster />
         </div>
 
         <hr className="rule-dark mt-12" />
@@ -32,7 +32,7 @@ export function SiteFooter({ proje }: { proje: ProjectView }) {
               style={{
                 fontSize: 'var(--step-h3)',
                 lineHeight: 1.2,
-                color: 'var(--color-cream)',
+                color: 'var(--color-blanc)',
               }}
             >
               {ad}

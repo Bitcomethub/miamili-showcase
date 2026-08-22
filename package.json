@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "verify": "node scripts/verify-data.mjs",
-    "verify:rendered": "node scripts/verify-rendered.mjs"
+    "check:palette": "node scripts/check-palette.mjs",
+    "verify": "node scripts/check-palette.mjs && node scripts/verify-data.mjs",
+    "shots": "node --experimental-websocket scripts/measure-surface.mjs"
   },
   "dependencies": {
     "next": "16.3.1",

@@ -31,12 +31,13 @@ export function Views({ proje }: { proje: ProjectView }) {
     <section
       id="manzaralar"
       style={{
-        backgroundColor: 'var(--color-sand)',
+        backgroundColor: 'var(--color-ink)',
         paddingBlock: 'clamp(4.5rem, 9vw, 8rem)',
       }}
     >
       <div className="shell">
         <SectionHeading
+          ton="dark"
           etiket="Manzaralar"
           baslik="Manzara verisi henüz doğrulanmadı"
           aciklama="Manzara, bir projede en kolay abartılan başlıktır. Bu sayfada yalnızca geliştiricinin resmî belgelerinde geçen ifadeler yer alıyor; ünite bazında manzara analizi, veri elimize ulaşana kadar yayınlanmayacak."
@@ -50,7 +51,7 @@ export function Views({ proje }: { proje: ProjectView }) {
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
                 fontWeight: 500,
-                color: 'var(--color-gold-deep)',
+                color: 'var(--color-gold-lift)',
               }}
             >
               Doğrulanmış
@@ -61,14 +62,14 @@ export function Views({ proje }: { proje: ProjectView }) {
                   <li
                     key={`${m.kat}-${m.madde}`}
                     className="py-5"
-                    style={{ borderTop: '1px solid var(--color-edge)' }}
+                    style={{ borderTop: '1px solid var(--color-ink-edge)' }}
                   >
                     <p
                       className="font-[family-name:var(--font-display)]"
                       style={{
                         fontSize: 'var(--step-h3)',
                         lineHeight: 1.25,
-                        color: 'var(--color-ink)',
+                        color: 'var(--color-blanc)',
                       }}
                     >
                       {m.madde}
@@ -77,7 +78,7 @@ export function Views({ proje }: { proje: ProjectView }) {
                       className="mt-2"
                       style={{
                         fontSize: 'var(--step-body-sm)',
-                        color: 'var(--color-warm)',
+                        color: 'var(--color-mist-dim)',
                       }}
                     >
                       Kaynak: geliştiricinin Kat {m.kat} ({m.baslik}) amenite
@@ -91,7 +92,7 @@ export function Views({ proje }: { proje: ProjectView }) {
                 className="mt-5"
                 style={{
                   fontSize: 'var(--step-body-sm)',
-                  color: 'var(--color-warm)',
+                  color: 'var(--color-mist)',
                 }}
               >
                 Resmî belgelerde manzaraya dair doğrulanmış bir ifade yok.
@@ -106,7 +107,7 @@ export function Views({ proje }: { proje: ProjectView }) {
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
                 fontWeight: 500,
-                color: 'var(--color-warm)',
+                color: 'var(--color-mist-dim)',
               }}
             >
               Henüz elimizde olmayan
@@ -117,10 +118,10 @@ export function Views({ proje }: { proje: ProjectView }) {
                   key={v}
                   className="py-4"
                   style={{
-                    borderTop: '1px solid var(--color-edge)',
+                    borderTop: '1px solid var(--color-ink-edge)',
                     fontSize: 'var(--step-body-sm)',
                     lineHeight: 1.6,
-                    color: 'var(--color-warm)',
+                    color: 'var(--color-mist)',
                   }}
                 >
                   {v}
@@ -142,7 +143,7 @@ export function Views({ proje }: { proje: ProjectView }) {
                   letterSpacing: '0.16em',
                   textTransform: 'uppercase',
                   fontWeight: 500,
-                  color: 'var(--color-gold-deep)',
+                  color: 'var(--color-gold-lift)',
                 }}
               >
                 <span style={{ borderBottom: '1px solid currentColor' }}>

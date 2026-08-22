@@ -56,7 +56,7 @@ export function FloorPlans({ proje }: Props) {
     <section
       id="kat-planlari"
       style={{
-        backgroundColor: 'var(--color-cream)',
+        backgroundColor: 'var(--color-blanc)',
         paddingBlock: 'clamp(4.5rem, 9vw, 8rem)',
       }}
     >
@@ -70,14 +70,14 @@ export function FloorPlans({ proje }: Props) {
 
         <div className="mt-14 grid gap-x-12 gap-y-12 lg:grid-cols-2">
           {ameniteKatlari.map((kat) => (
-            <article key={kat.kat} style={{ borderTop: '1px solid var(--color-ink)' }}>
+            <article key={kat.kat} style={{ borderTop: '1px solid var(--color-gold)' }}>
               <div className="flex items-baseline gap-4 pt-6">
                 <span
                   className="figure"
                   style={{
                     fontSize: 'var(--step-figure)',
                     lineHeight: 1,
-                    color: 'var(--color-gold-deep)',
+                    color: 'var(--color-moss)',
                   }}
                 >
                   {String(kat.kat).padStart(2, '0')}
@@ -100,7 +100,7 @@ export function FloorPlans({ proje }: Props) {
                     style={{
                       fontSize: 'var(--step-body-sm)',
                       lineHeight: 1.5,
-                      color: 'var(--color-warm)',
+                      color: 'var(--color-moss)',
                       borderTop: '1px solid var(--color-edge)',
                     }}
                   >
@@ -139,8 +139,8 @@ export function FloorPlans({ proje }: Props) {
                   className="rounded-full px-6 py-3 text-left transition-colors duration-200"
                   style={{
                     backgroundColor: secili ? 'var(--color-ink)' : 'transparent',
-                    color: secili ? 'var(--color-cream)' : 'var(--color-ink)',
-                    border: `1px solid ${secili ? 'var(--color-ink)' : 'var(--color-edge)'}`,
+                    color: secili ? 'var(--color-blanc)' : 'var(--color-ink)',
+                    border: `1px solid ${secili ? 'var(--color-ink)' : 'var(--color-edge-strong)'}`,
                     fontSize: 12,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
@@ -176,7 +176,7 @@ export function FloorPlans({ proje }: Props) {
                     letterSpacing: '0.22em',
                     textTransform: 'uppercase',
                     fontWeight: 500,
-                    color: 'var(--color-gold-deep)',
+                    color: 'var(--color-moss)',
                   }}
                 >
                   Ünite seçin
@@ -212,7 +212,7 @@ export function FloorPlans({ proje }: Props) {
                         style={{
                           backgroundColor: secili
                             ? 'var(--color-gold)'
-                            : 'var(--color-sand-deep)',
+                            : 'var(--color-frost-deep)',
                           color: 'var(--color-ink)',
                           fontSize: 15,
                           fontWeight: secili ? 600 : 400,
@@ -253,7 +253,7 @@ export function FloorPlans({ proje }: Props) {
                     style={{
                       fontSize: 'var(--step-h3)',
                       lineHeight: 1.15,
-                      color: 'var(--color-cream)',
+                      color: 'var(--color-blanc)',
                     }}
                   >
                     {aktifUnite.konfigurasyon}
@@ -302,7 +302,7 @@ export function FloorPlans({ proje }: Props) {
                           className="figure"
                           style={{
                             fontSize: 'var(--step-lead)',
-                            color: 'var(--color-cream)',
+                            color: 'var(--color-blanc)',
                           }}
                         >
                           {satir.d}
@@ -344,7 +344,7 @@ export function FloorPlans({ proje }: Props) {
                   style={{
                     fontSize: 'var(--step-fine)',
                     lineHeight: 1.6,
-                    color: 'var(--color-warm)',
+                    color: 'var(--color-moss-dim)',
                   }}
                 >
                   Koyu çizgiler seçili kat grubunun katlarıdır; altın çizgiler

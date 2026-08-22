@@ -44,7 +44,7 @@ export function ExecutiveSummary({ proje }: { proje: ProjectView }) {
       id="genel-bakis"
       className="scroll-mt-24"
       style={{
-        backgroundColor: 'var(--color-cream)',
+        backgroundColor: 'var(--color-blanc)',
         paddingBlock: 'clamp(4.5rem, 9vw, 8rem)',
       }}
     >
@@ -61,7 +61,7 @@ export function ExecutiveSummary({ proje }: { proje: ProjectView }) {
                   letterSpacing: '0.22em',
                   textTransform: 'uppercase',
                   fontWeight: 500,
-                  color: 'var(--color-gold-deep)',
+                  color: 'var(--color-moss)',
                 }}
               >
                 {r.etiket}
@@ -81,7 +81,7 @@ export function ExecutiveSummary({ proje }: { proje: ProjectView }) {
                   className="mt-1.5"
                   style={{
                     fontSize: 'var(--step-body-sm)',
-                    color: 'var(--color-warm)',
+                    color: 'var(--color-moss-dim)',
                   }}
                 >
                   {r.sonek}
@@ -98,7 +98,7 @@ export function ExecutiveSummary({ proje }: { proje: ProjectView }) {
               style={{
                 fontSize: 'var(--step-body)',
                 lineHeight: 1.75,
-                color: 'var(--color-warm)',
+                color: 'var(--color-moss)',
               }}
             >
               {sunum.ozetParagraf}
@@ -138,7 +138,7 @@ export function ExecutiveSummary({ proje }: { proje: ProjectView }) {
                     letterSpacing: '0.16em',
                     textTransform: 'uppercase',
                     fontWeight: 500,
-                    color: 'var(--color-gold-deep)',
+                    color: 'var(--color-moss)',
                     lineHeight: 1.9,
                   }}
                 >

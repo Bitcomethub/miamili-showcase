@@ -39,7 +39,7 @@ export function Hero({ proje }: { proje: ProjectView }) {
               className="rise mt-7"
               style={{
                 fontSize: 'var(--step-h1)',
-                color: 'var(--color-cream)',
+                color: 'var(--color-blanc)',
                 animationDelay: '110ms',
               }}
             >
@@ -83,8 +83,8 @@ export function Hero({ proje }: { proje: ProjectView }) {
                 href="#galeri"
                 className="inline-flex items-center rounded-full px-7 py-4 transition-colors duration-200"
                 style={{
-                  border: `1px solid ${saydam('--color-cream', 32)}`,
-                  color: 'var(--color-cream)',
+                  border: `1px solid ${saydam('--color-blanc', 32)}`,
+                  color: 'var(--color-blanc)',
                   fontSize: 13,
                   letterSpacing: '0.13em',
                   textTransform: 'uppercase',
@@ -144,7 +144,7 @@ export function Hero({ proje }: { proje: ProjectView }) {
             >
               Sunan
             </span>
-            <MiamiliMark ton="cream" boyut="sm" />
+            <MiamiliMark ton="blanc" boyut="sm" />
           </span>
 
           <span className="flex items-baseline gap-4">
@@ -160,7 +160,7 @@ export function Hero({ proje }: { proje: ProjectView }) {
             </span>
             <span
               className="figure"
-              style={{ fontSize: 'var(--step-h3)', color: 'var(--color-cream)' }}
+              style={{ fontSize: 'var(--step-h3)', color: 'var(--color-blanc)' }}
             >
               {teslimTahmini}
             </span>

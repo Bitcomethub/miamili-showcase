@@ -11,10 +11,10 @@ export default function NotFound() {
       className="flex min-h-screen flex-col items-center justify-center px-6 text-center"
       style={{ backgroundColor: 'var(--color-ink)' }}
     >
-      <MiamiliMark ton="cream" boyut="md" taglineGoster />
+      <MiamiliMark ton="blanc" boyut="md" taglineGoster />
       <p
         className="mt-12 font-[family-name:var(--font-display)]"
-        style={{ fontSize: 'var(--step-h2)', color: 'var(--color-cream)' }}
+        style={{ fontSize: 'var(--step-h2)', color: 'var(--color-blanc)' }}
       >
         Bu sayfa bulunamadı
       </p>

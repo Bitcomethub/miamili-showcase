@@ -58,7 +58,7 @@ export function Investment({ proje }: { proje: ProjectView }) {
           style={{ backgroundColor: 'var(--color-ink-lift)', borderRadius: 2 }}
         >
           <h3
-            style={{ fontSize: 'var(--step-h3)', color: 'var(--color-cream)' }}
+            style={{ fontSize: 'var(--step-h3)', color: 'var(--color-blanc)' }}
           >
             Ödeme planı
           </h3>
@@ -111,7 +111,7 @@ export function Investment({ proje }: { proje: ProjectView }) {
                   style={{
                     fontSize: 'var(--step-body-sm)',
                     lineHeight: 1.5,
-                    color: 'var(--color-cream)',
+                    color: 'var(--color-blanc)',
                   }}
                 >
                   {k.etiket}
@@ -147,7 +147,7 @@ export function Investment({ proje }: { proje: ProjectView }) {
         {/* --- Neden MiamiLi: kart ızgarası değil, numaralı editoryal liste --- */}
         <div className="mt-20">
           <h3
-            style={{ fontSize: 'var(--step-h3)', color: 'var(--color-cream)' }}
+            style={{ fontSize: 'var(--step-h3)', color: 'var(--color-blanc)' }}
           >
             Neden MiamiLi ile yatırım?
           </h3>
@@ -175,7 +175,7 @@ export function Investment({ proje }: { proje: ProjectView }) {
                     style={{
                       fontSize: 'var(--step-h3)',
                       lineHeight: 1.2,
-                      color: 'var(--color-cream)',
+                      color: 'var(--color-blanc)',
                     }}
                   >
                     {g.baslik}

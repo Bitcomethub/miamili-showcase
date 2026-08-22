@@ -1,7 +1,7 @@
 /**
  * Yarı saydam marka renkleri.
  *
- * `rgba(244,241,234,0.32)` yazmak marka rengini ikinci bir yere KOPYALAR;
+ * `rgba(255,255,255,0.32)` yazmak marka rengini ikinci bir yere KOPYALAR;
  * token değişince bu kopyalar sessizce eskir. Bunun yerine token'ın kendisi
  * seyreltilir. oklab uzayında karıştırmak, sRGB'de görülen gri fringe'i
  * (özellikle degrade duraklarında) engeller.
